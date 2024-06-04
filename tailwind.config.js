@@ -11,6 +11,10 @@ module.exports = {
         borderCl:"#E6E6E6",
         customGreen:"#00B207",
         cartCl:"#2C742F",
+        navGrey:"#808080"
+      },
+      backgroundImage:{
+        navbar:"./public/nav.svg"
       }
     },
   },

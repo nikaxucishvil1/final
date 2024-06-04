@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Input = (props:Input) => {
     const {type,placeholder,className} = props
