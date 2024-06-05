@@ -4,9 +4,23 @@ import Input from "../../_atoms/Input/Input";
 import Button from "../../_atoms/Button/Button";
 import { CiHeart } from "react-icons/ci";
 import { LiaShoppingBagSolid } from "react-icons/lia";
+import { useContext, useEffect, useState } from "react";
+import { GlobalState } from "../../_organisms/Mainlayout";
+import { Link } from "react-router-dom";
 
-const Search = (props: Search) => {
-  const { count, cost } = props;
+const Search = () => {
+  const context = useContext(GlobalState);
+  const [cost, setCost] = useState<any>();
+  if (!context) return;
+  const { cart } = context;
+  
+  useEffect(() => {
+    const totalCost = context.cart.reduce((currentValue, item) => {
+      return item.price + currentValue;
+    }, 0);
+    setCost(totalCost);
+  }, [context]);
+
   return (
     <>
       <div className="flex items-center justify-around mt-4">
@@ -26,12 +40,12 @@ const Search = (props: Search) => {
         <div className="flex items-center justify-center gap-2">
           <CiHeart fontSize={40} />
           <div className="w-[1px] h-[40px] bg-customGrey"></div>
-          <div className="relative">
+          <Link to={'/shoppingCart'} className="relative">
             <LiaShoppingBagSolid fontSize={40} />
             <div className="bg-cartCl flex items-center justify-center rounded-[30px] text-white absolute right-[3px] top-[-3px] ">
-              <p className="p-1">{count}</p>
+              <p className="p-1">{cart.length}</p>
             </div>
-          </div>
+          </Link>
           <div>
             <p className="text-customGrey">Shopping cart</p>
             <p>${cost}</p>

@@ -1,6 +1,7 @@
 interface button {
   children: React.ReactNode;
   className?: string;
+  onClick?:() => void;
 }
 interface Input {
   type: string;
@@ -35,4 +36,6 @@ interface RatingType {
  interface GlobalStateType  {
     data: DataType[];
     setData: React.Dispatch<React.SetStateAction<DataType[]>>;
+    cart:DataType[],
+    setCart:React.Dispatch<React.SetStateAction<any>>
   };

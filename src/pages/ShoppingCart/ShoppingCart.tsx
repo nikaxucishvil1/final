@@ -1,7 +1,10 @@
+import Mainlayout from "../../common/components/_organisms/Mainlayout"
 
 const ShoppingCart = () => {
   return (
-    <div>ShoppingCart</div>
+    <Mainlayout>
+      <p>g1</p>
+    </Mainlayout>
   )
 }
 

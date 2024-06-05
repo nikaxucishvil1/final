@@ -2,11 +2,12 @@ import { useState, useContext, useEffect } from "react";
 import { GlobalState } from "../../_organisms/Mainlayout";
 import Slider from "@mui/material/Slider";
 import { Link } from "react-router-dom";
+import Button from "../../_atoms/Button/Button";
 
 const Products = () => {
   const context = useContext(GlobalState);
   if (!context) return;
-  const { data } = context;
+  const { data, cart, setCart } = context;
 
   const [shownData, setShownData] = useState(data);
   const [filters] = useState<string[]>([]);
@@ -34,6 +35,17 @@ const Products = () => {
   const handleSliderChange = (__event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
+  const addToCart = (item:DataType) => {
+    const itemInCart = cart.some(list => list === item);
+    if (!itemInCart) {
+        setCart([...cart,item])
+    } else {
+        alert('already in the cart')
+    }
+
+}
+
+  
 
   return (
     <div className="flex mt-10 flex-col gap-5">
@@ -93,34 +105,34 @@ const Products = () => {
           {shownData
             .filter((item) => item.price > value)
             .map((item, i) => (
-              <Link to={`/details/${item.id}`} key={i}>
+              <div key={i}>
                 <div className="one-product relative min-h-[400px] rounded-[8px] overflow-hidden flex flex-col bg-white border border-[#d9d5d5] shadow-md hover:border-[#20B52652] hover:shadow-[#20B52652] p-2">
-                  <div className="img ">
+                  <Link to={`/details/${item.id}`}>
                     <img
                       className="h-[230px] w-[198px]"
                       src={item.image}
                       alt=""
                     />
+                  </Link>
 
-                    <div className="w-[198px] rateing p-4 flex flex-col ">
-                      <h2 className="title text-sm">{item.title}</h2>
+                  <div className="w-[198px] rateing p-4 flex flex-col ">
+                    <h2 className="title text-sm">{item.title}</h2>
 
-                      <h2 className="price font-bold text-sm">${item.price}</h2>
-                      <div className="absolute bottom-[25px] right-[16px] bg-[#F2F2F2] w-[30px] h-[30px] rounded-full flex items-center justify-center  ">
-                        <img
-                          className="w-[15px] h-[15px]"
-                          src="/assets/cart.svg"
-                          alt=""
-                        />
-                      </div>
+                    <h2 className="price font-bold text-sm">${item.price}</h2>
+                    <Button className="absolute bottom-[25px] right-[16px] bg-[#F2F2F2] w-[30px] h-[30px] rounded-full flex items-center justify-center  " onClick={() => {addToCart(item)}}>
+                      <img
+                        className="w-[15px] h-[15px]"
+                        src="/assets/cart.svg"
+                        alt=""
+                      />
+                    </Button>
 
-                      <div className="stars ">
-                        <img className="" src="assets/star.svg" alt="" />
-                      </div>
+                    <div className="stars ">
+                      <img className="" src="assets/star.svg" alt="" />
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
         </div>
       </div>
