@@ -1,11 +1,11 @@
-import Mainlayout from "../../common/components/_organisms/Mainlayout";
 import ShoppingCartComponent from "../../common/components/_molecules/Cart/Cart";
+import Layout from "../../common/components/_organisms/Layout";
 
 const ShoppingCart = () => {
   return (
-    <Mainlayout>
+    <Layout>
       <ShoppingCartComponent />
-    </Mainlayout>
+    </Layout>
   );
 };
 
