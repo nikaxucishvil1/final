@@ -1,6 +1,6 @@
+import React, { createContext, useState } from "react";
 import Footer from "../_molecules/Footer/Footer";
 import Header from "../_molecules/Header/Header";
-import React, { createContext, useState } from "react";
 import datajson from "../../../data.json";
 import Search from "../_molecules/Search/Search";
 import Nanbar from "../_molecules/NavBar/Nanbar";
@@ -10,18 +10,11 @@ const typedDataJson = datajson as DataType[];
 export const GlobalState = createContext<GlobalStateType | null>(null);
 
 const Mainlayout = ({ children }: { children: React.ReactNode }) => {
-  const [data, setData] = useState<DataType[]>(typedDataJson);
-  const [cart, setCart] = useState([]);
+  const [data] = useState<DataType[]>(typedDataJson);
+  const [cart, setCart] = useState<DataType[]>([]);
 
   return (
-    <GlobalState.Provider
-      value={{
-        data,
-        setData,
-        cart,
-        setCart,
-      }}
-    >
+    <GlobalState.Provider value={{ data, cart, setCart }}>
       <div>
         <Header />
         <Search />

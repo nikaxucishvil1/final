@@ -35,7 +35,9 @@ interface RatingType {
 
  interface GlobalStateType  {
     data: DataType[];
-    setData: React.Dispatch<React.SetStateAction<DataType[]>>;
     cart:DataType[],
     setCart:React.Dispatch<React.SetStateAction<any>>
   };
+  interface List {
+    children:string
+  }

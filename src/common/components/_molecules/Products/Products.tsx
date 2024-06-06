@@ -43,9 +43,7 @@ const Products = () => {
         alert('already in the cart')
     }
 
-}
-
-  
+} 
 
   return (
     <div className="flex mt-10 flex-col gap-5">

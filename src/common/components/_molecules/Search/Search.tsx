@@ -1,4 +1,3 @@
-import { GiThreeLeaves } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import Input from "../../_atoms/Input/Input";
 import Button from "../../_atoms/Button/Button";
@@ -25,7 +24,7 @@ const Search = () => {
     <>
       <div className="flex items-center justify-around mt-4">
         <div className="flex items-center justify-center gap-[10px]">
-          <GiThreeLeaves color="#00B207" fontSize={30} />
+          <img src="../../../../../public/assets/leaf.svg" alt="" />
           <p className="text-3xl">Ecobazar</p>
         </div>
         <div className="flex items-center justify-center border border-borderCl rounded-[6px]">
