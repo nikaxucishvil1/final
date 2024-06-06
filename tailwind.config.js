@@ -13,6 +13,8 @@ module.exports = {
         cartCl:"#2C742F",
         navGrey:"#666666",
         customBlack:"#1A1A1A",
+        borderGrey:"#E6E6E6",
+        returnBg:"#F2F2F2"
       },
       backgroundImage:{
         navbar:"./public/nav.svg"
