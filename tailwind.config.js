@@ -14,7 +14,8 @@ module.exports = {
         navGrey:"#666666",
         customBlack:"#1A1A1A",
         borderGrey:"#E6E6E6",
-        returnBg:"#F2F2F2"
+        returnBg:"#F2F2F2",
+        GreenBorder:"#20B52652"
       },
       backgroundImage:{
         navbar:"./public/nav.svg"

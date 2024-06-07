@@ -9,16 +9,17 @@ import { Link } from "react-router-dom";
 
 const Search = () => {
   const context = useContext(GlobalState);
-  const [cost, setCost] = useState<any>();
-  if (!context) return;
+  const [cost, setCost] = useState(0);
+
+  if (!context) return null;
   const { cart } = context;
   
   useEffect(() => {
-    const totalCost = context.cart.reduce((currentValue, item) => {
+    const totalCost = cart.reduce((currentValue, item) => {
       return item.price + currentValue;
     }, 0);
     setCost(totalCost);
-  }, [context]);
+  }, [cart]);
 
   return (
     <>
@@ -47,7 +48,7 @@ const Search = () => {
           </Link>
           <div>
             <p className="text-customGrey">Shopping cart</p>
-            <p>${cost}</p>
+            <p>${cost.toFixed(2)}</p>
           </div>
         </div>
       </div>

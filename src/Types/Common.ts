@@ -26,6 +26,7 @@ interface DataType {
   category: string;
   image: string;
   rating: RatingType;
+  count :number
 }
 
 interface RatingType {
@@ -40,4 +41,14 @@ interface RatingType {
   };
   interface List {
     children:string
+  }
+  interface CardProducts {
+    decrement:(id:number, count:number) => void;
+    increment:(id:number, count:number) => void;
+    calculateSubtotal:(item:DataType) => React.ReactNode;
+    item:DataType;
+    removeItem:(item:number) => void
+  }
+  interface Total {
+    calculateTotal:() => React.ReactNode
   }
