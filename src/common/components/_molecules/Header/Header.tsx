@@ -4,6 +4,7 @@ import { RxSlash } from "react-icons/rx";
 import Button from "../../_atoms/Button/Button";
 
 const Header = () => {
+
   return (
     <header className="text-customGrey bg-headerBg flex items-center justify-around p-4">
       <div className="flex items-center justiify-center gap-1">

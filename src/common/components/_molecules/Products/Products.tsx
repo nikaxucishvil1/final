@@ -3,11 +3,12 @@ import { GlobalState } from "../../_organisms/Mainlayout";
 import Slider from "@mui/material/Slider";
 import { Link } from "react-router-dom";
 import Button from "../../_atoms/Button/Button";
+import { capitalize } from "@mui/material";
 
 const Products = () => {
   const context = useContext(GlobalState);
-  if (!context) return;
-  const { data, cart, setCart } = context;
+  if (!context) return null;
+  const { data, cart, setCart, setNav } = context;
 
   const [shownData, setShownData] = useState(data);
   const [filters] = useState<string[]>([]);
@@ -22,16 +23,22 @@ const Products = () => {
     });
   }, []);
 
-  const handleChange = (index: number, filter: string) => {
+  const handleChange = (
+    index: number,
+    filter: string,
+  ) => {
     if (checked === index) {
       setChecked(null);
       setShownData(data);
+      setNav("Home")
     } else {
       setChecked(index);
       setShownData(data.filter((item) => item.category === filter));
+      setNav(capitalize(filter))
     }
   };
 
+ 
   const handleSliderChange = (__event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
@@ -58,7 +65,7 @@ const Products = () => {
           <h1>All Categories</h1>
           <div className="checkbox w-full flex flex-col gap-[10px] text-sm ">
             <div className="flex gap-2 flex-col">
-              {showFilter.map((item, index) => {
+              {showFilter.map((item, index) => {                
                 return (
                   <div key={item} className="flex items-center gap-2">
                     <input
@@ -102,7 +109,10 @@ const Products = () => {
             .map((item, i) => (
               <div key={i}>
                 <div className="one-product relative min-h-[400px] w-[300px] rounded-[8px] overflow-hidden flex flex-col  bg-white border border-borderGrey shadow-md hover:border-GreenBorder hover:shadow-GreenBorder p-2">
-                  <Link to={`/details/${item.id}`} className="flex items-center justify-center">
+                  <Link
+                    to={`/details/${item.id}`}
+                    className="flex items-center justify-center"
+                  >
                     <img
                       className="h-[230px] w-[198px]"
                       src={item.image}

@@ -9,9 +9,10 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const typedDataJson = datajson as DataType[];
   const [data] = useState<DataType[]>(typedDataJson);
   const [cart, setCart] = useState<DataType[]>([]);
-  
+  const [nav, setNav] = useState("Home");
+
   return (
-    <GlobalState.Provider value={{ data, cart, setCart }}>
+    <GlobalState.Provider value={{ data, cart, setCart, nav, setNav }}>
       {children}
     </GlobalState.Provider>
   );

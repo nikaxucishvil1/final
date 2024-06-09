@@ -1,7 +1,7 @@
 interface button {
   children: React.ReactNode;
   className?: string;
-  onClick?:() => void;
+  onClick?: () => void;
 }
 interface Input {
   type: string;
@@ -11,9 +11,6 @@ interface Input {
 interface Search {
   count: number;
   cost: number;
-}
-interface Show {
-  place: string;
 }
 interface DataContextType {
   data: any;
@@ -26,7 +23,7 @@ interface DataType {
   category: string;
   image: string;
   rating: RatingType;
-  count :number
+  count: number;
 }
 
 interface RatingType {
@@ -34,21 +31,24 @@ interface RatingType {
   count: number;
 }
 
- interface GlobalStateType  {
-    data: DataType[];
-    cart:DataType[];
-    setCart:React.Dispatch<React.SetStateAction<any>>
-  };
-  interface List {
-    children:string
-  }
-  interface CardProducts {
-    decrement:(id:number, count:number) => void;
-    increment:(id:number, count:number) => void;
-    calculateSubtotal:(item:DataType) => React.ReactNode;
-    item:DataType;
-    removeItem:(item:number) => void
-  }
-  interface Total {
-    calculateTotal:() => React.ReactNode
-  }
+interface GlobalStateType {
+  data: DataType[];
+  cart: DataType[];
+  setCart: React.Dispatch<React.SetStateAction<any>>;
+  nav: string;
+  setNav: React.Dispatch<React.SetStateAction<string>>;
+}
+interface List {
+  children: string;
+}
+interface CardProducts {
+  decrement: (id: number, count: number) => void;
+  increment: (id: number, count: number) => void;
+  calculateSubtotal: (item: DataType) => React.ReactNode;
+  item: DataType;
+  removeItem: (item: number) => void;
+}
+interface Total {
+  calculateTotal: () => React.ReactNode;
+  setNav: React.Dispatch<React.SetStateAction<string>>
+}

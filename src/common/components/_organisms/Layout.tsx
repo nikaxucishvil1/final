@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Header />
       <Search />
       <Nanbar />
-      <Show place="home" />
+      <Show/>
       {children}
       <Footer />
     </div>

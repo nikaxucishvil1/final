@@ -10,7 +10,7 @@ import Coupon from "../../_atoms/CartCoupon/Coupon";
 const ShoppingCartComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { cart, setCart } = context;
+  const { cart, setCart,setNav } = context;
 
   const updateItemCount = (id: number, newCount: number) => {
     setCart(
@@ -66,7 +66,7 @@ const ShoppingCartComponent = () => {
         </div>
         <Coupon />
       </div>
-      <Total calculateTotal={calculateTotal} />
+      <Total setNav={setNav} calculateTotal={calculateTotal} />
     </div>
   );
 };
