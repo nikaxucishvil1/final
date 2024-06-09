@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import Layout from "../../common/components/_organisms/Layout"
 import { GlobalState } from "../../common/components/_organisms/Mainlayout";
+import CheckoutComponent from "../../common/components/_molecules/CheckoutComponent/CheckoutComponent";
 
 const Checkout = () => {
   const context = useContext(GlobalState);
@@ -12,8 +13,7 @@ const Checkout = () => {
   return (
     <>
       <Layout>
-
-        <h1>g</h1>
+        <CheckoutComponent />
       </Layout>
     </>
   )

@@ -2,17 +2,22 @@ import React, { createContext } from "react";
 
 import { useState } from "react";
 import datajson from "../../../data.json";
+import countryjson from "../../../countries.json";
 
 export const GlobalState = createContext<GlobalStateType | null>(null);
 
 const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const typedDataJson = datajson as DataType[];
+  const countryDataJson = countryjson as any;
   const [data] = useState<DataType[]>(typedDataJson);
+  const [countries] = useState<any>(countryDataJson);
   const [cart, setCart] = useState<DataType[]>([]);
   const [nav, setNav] = useState("Home");
 
   return (
-    <GlobalState.Provider value={{ data, cart, setCart, nav, setNav }}>
+    <GlobalState.Provider
+      value={{ data, countries, cart, setCart, nav, setNav }}
+    >
       {children}
     </GlobalState.Provider>
   );

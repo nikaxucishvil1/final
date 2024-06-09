@@ -36,7 +36,22 @@ interface GlobalStateType {
   cart: DataType[];
   setCart: React.Dispatch<React.SetStateAction<any>>;
   nav: string;
+  countries:CountriesType[];
   setNav: React.Dispatch<React.SetStateAction<string>>;
+}
+interface CountriesType{
+  code2:string,
+  code3:string,
+  name:string,
+  capital:string,
+  region:string,
+  subregion:string,
+  states:states[] | null
+}
+interface states {
+  code:string,
+  name:string,
+  subdivision: string | null
 }
 interface List {
   children: string;
@@ -51,4 +66,11 @@ interface CardProducts {
 interface Total {
   calculateTotal: () => React.ReactNode;
   setNav: React.Dispatch<React.SetStateAction<string>>
+}
+interface COInput {
+  label:string,
+  InputType:string,
+  Placeholder:string,
+  InputName?:string,
+  className?:string
 }
