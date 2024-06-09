@@ -66,7 +66,7 @@ const ShoppingCartComponent = () => {
         </div>
         <Coupon />
       </div>
-      <Total setNav={setNav} calculateTotal={calculateTotal} />
+      <Total cart={cart} setNav={setNav} calculateTotal={calculateTotal} />
     </div>
   );
 };

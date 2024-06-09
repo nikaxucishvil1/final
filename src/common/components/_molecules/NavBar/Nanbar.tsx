@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import List from "../../_atoms/List/List";
 import { BiPhoneCall } from "react-icons/bi";
 
@@ -6,7 +7,9 @@ const Nanbar = () => {
     <div className="flex items-center justify-between pl-[12rem] pr-[15rem] mt-4 mb-4">
       <nav>
         <ul className="list-none flex items-center justify-between gap-5 text-navGrey">
-          <List>Home</List>
+          <Link to={"/"}>
+            <List>Home</List>
+          </Link>
           <List>Shop</List>
           <List>Pages</List>
           <List>Blog</List>

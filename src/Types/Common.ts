@@ -46,7 +46,7 @@ interface CountriesType{
   capital:string,
   region:string,
   subregion:string,
-  states:states[] | null
+  states:states[]
 }
 interface states {
   code:string,
@@ -65,12 +65,38 @@ interface CardProducts {
 }
 interface Total {
   calculateTotal: () => React.ReactNode;
-  setNav: React.Dispatch<React.SetStateAction<string>>
+  setNav: React.Dispatch<React.SetStateAction<string>>;
+  cart:DataType[]
 }
 interface COInput {
-  label:string,
-  InputType:string,
-  Placeholder:string,
-  InputName?:string,
+  label:string;
+  InputType:string;
+  Placeholder:string;
+  InputName?:string;
   className?:string
+}
+interface Billing {
+  formik:any;
+  setValue:React.Dispatch<React.SetStateAction<string>>;
+  countries:CountriesType[];
+  states:states[]
+}
+
+interface FormValues {
+  firstName: string;
+  lastName: string;
+  Address: string;
+  zip: string;
+  email: string;
+  phoneNumber: string;
+  state: string;
+  country: string;
+}
+
+interface CheckoutCard {
+  cart:DataType[];
+  calculateTotal: () => React.ReactNode;
+  calculateSubtotal: (item: DataType) => React.ReactNode;
+  paymentMethod:string;
+  handlePaymentMethodChange: (e:React.ChangeEvent<HTMLInputElement>) => void
 }
