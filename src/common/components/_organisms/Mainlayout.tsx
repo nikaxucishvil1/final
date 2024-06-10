@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect } from "react";
 
 import { useState } from "react";
 import datajson from "../../../data.json";
@@ -13,6 +13,11 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const [countries] = useState<any>(countryDataJson);
   const [cart, setCart] = useState<DataType[]>([]);
   const [nav, setNav] = useState("Home");
+  useEffect(() => {
+    if (window.location.pathname !== "/") {
+      window.location.replace("/");
+    }
+  }, []);
 
   return (
     <GlobalState.Provider

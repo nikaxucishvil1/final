@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { GlobalState } from "../../_organisms/Mainlayout";
 import Slider from "@mui/material/Slider";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import Button from "../../_atoms/Button/Button";
 import { capitalize } from "@mui/material";
+import { addToCart } from "../../_atoms/AddToCart/AddToCart";
 
 const Products = () => {
   const context = useContext(GlobalState);
@@ -16,6 +17,14 @@ const Products = () => {
   const [value, setValue] = useState(10);
   const [checked, setChecked] = useState<number | null>(null);
 
+  const navigate = useNavigate();
+
+  const transferData = (item: DataType) => {
+    return navigate("/Details", {
+      state: item,
+    });
+  };
+
   useEffect(() => {
     data.map((item) => {
       filters.push(item.category);
@@ -23,33 +32,22 @@ const Products = () => {
     });
   }, []);
 
-  const handleChange = (
-    index: number,
-    filter: string,
-  ) => {
+  const handleChange = (index: number, filter: string) => {
     if (checked === index) {
       setChecked(null);
       setShownData(data);
-      setNav("Home")
+      setNav("Home");
     } else {
       setChecked(index);
       setShownData(data.filter((item) => item.category === filter));
-      setNav(capitalize(filter))
+      setNav(capitalize(filter));
     }
   };
 
- 
   const handleSliderChange = (__event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
-  const addToCart = (item: DataType) => {
-    const itemInCart = cart.some((list) => list === item);
-    if (!itemInCart) {
-      setCart([...cart, item]);
-    } else {
-      alert("already in the cart");
-    }
-  };
+  
 
   return (
     <div className="flex mt-10 flex-col gap-5">
@@ -65,7 +63,7 @@ const Products = () => {
           <h1>All Categories</h1>
           <div className="checkbox w-full flex flex-col gap-[10px] text-sm ">
             <div className="flex gap-2 flex-col">
-              {showFilter.map((item, index) => {                
+              {showFilter.map((item, index) => {
                 return (
                   <div key={item} className="flex items-center gap-2">
                     <input
@@ -109,23 +107,20 @@ const Products = () => {
             .map((item, i) => (
               <div key={i}>
                 <div className="one-product relative min-h-[400px] w-[300px] rounded-[8px] overflow-hidden flex flex-col  bg-white border border-borderGrey shadow-md hover:border-GreenBorder hover:shadow-GreenBorder p-2">
-                  <Link
-                    to={`/details/${item.id}`}
-                    className="flex items-center justify-center"
-                  >
+                  <div onClick={() => transferData(item)} className="flex items-center justify-center">
                     <img
                       className="h-[230px] w-[198px]"
                       src={item.image}
                       alt=""
                     />
-                  </Link>
+                  </div>
                   <div className=" rateing p-4 flex flex-col gap-5 ">
                     <h2 className="title text-sm">{item.title.slice()}</h2>
                     <h2 className="price font-bold text-sm">${item.price}</h2>
                     <Button
                       className="absolute bottom-[25px] right-[16px] bg-returnBg w-[30px] h-[30px] rounded-full flex items-center justify-center  "
                       onClick={() => {
-                        addToCart(item);
+                        addToCart(item,cart,setCart);
                       }}
                     >
                       <img

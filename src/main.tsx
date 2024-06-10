@@ -7,6 +7,7 @@ import { router } from "./common/Routing/common";
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+    
     <Mainlayout>
         <RouterProvider router={router} />
     </Mainlayout>

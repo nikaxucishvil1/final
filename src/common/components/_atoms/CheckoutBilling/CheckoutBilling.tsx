@@ -1,9 +1,9 @@
 const CheckoutBilling = (props: Billing) => {
   const { formik, setValue, countries, states } = props;
   return (
-    <div className="checkout container p-6 w-[50%]">
+    <form className="checkout container p-6 w-[50%]">
       <h2 className="text-2xl font-bold mb-6">Billing Information</h2>
-      <form className="space-y-6">
+      <div className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
             <label className="block mb-2 font-medium">First name</label>
@@ -163,8 +163,8 @@ const CheckoutBilling = (props: Billing) => {
           <input type="checkbox" className="mr-2" />
           <label>Ship to a different address</label>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

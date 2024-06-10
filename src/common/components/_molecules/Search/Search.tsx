@@ -12,17 +12,14 @@ const Search = () => {
   const [cost, setCost] = useState(0);
 
   if (!context) return null;
-  const { cart,setNav } = context;
-  
+  const { cart, setNav } = context;
+
   useEffect(() => {
     const totalCost = cart.reduce((currentValue, item) => {
       return item.price + currentValue;
     }, 0);
     setCost(totalCost);
   }, [cart]);
-
-  console.log(location.pathname);
-  
 
   return (
     <>
@@ -43,7 +40,11 @@ const Search = () => {
         <div className="flex items-center justify-center gap-2">
           <CiHeart fontSize={40} />
           <div className="w-[1px] h-[40px] bg-customGrey"></div>
-          <Link to={'/shoppingCart'} className="relative" onClick={() => setNav("Shopping Cart")}>
+          <Link
+            to={"/shoppingCart"}
+            className="relative"
+            onClick={() => setNav("Shopping Cart")}
+          >
             <LiaShoppingBagSolid fontSize={40} />
             <div className="bg-cartCl flex items-center justify-center rounded-[30px] text-white absolute right-[3px] top-[-3px] ">
               <p className="p-1">{cart.length}</p>

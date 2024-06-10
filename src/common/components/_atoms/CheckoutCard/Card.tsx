@@ -1,11 +1,20 @@
-const Card = (props:CheckoutCard) => {
-    const {cart,calculateSubtotal,calculateTotal,paymentMethod,handlePaymentMethodChange} = props
+const Card = (props: CheckoutCard) => {
+  const {
+    cart,
+    calculateSubtotal,
+    calculateTotal,
+    paymentMethod,
+    handlePaymentMethodChange,
+  } = props;
   return (
     <div className="border rounded-lg p-4 shadow-lg">
       <h2 className="text-center text-2xl font-bold mb-4">Order Summary</h2>
-      {cart.map((item) => {
+      {cart.map((item, index) => {
         return (
-          <div className="flex justify-between items-center mb-4 gap-10">
+          <div
+            key={index}
+            className="flex justify-between items-center mb-4 gap-10"
+          >
             <img src={item.image} alt="Green Capsicum" className="w-12 h-12" />
             <span>
               {item.title} x{item.count}
