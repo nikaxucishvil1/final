@@ -1,8 +1,8 @@
 
 const Button = (props:button) => {
-    const {children,className,onClick} = props
+    const {type,children,className,onClick} = props
   return (
-    <button onClick={onClick} className={className}>{children}</button>
+    <button type={type} onClick={onClick} className={className}>{children}</button>
   )
 }
 

@@ -2,15 +2,16 @@ interface button {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  type?: "submit" | "button" | "reset" | undefined;
 }
 interface Input {
   type: string;
   placeholder?: string;
   className: string;
   name?: string;
-  onchange?:() => void;
-  value?:string;
-  onBlur?:() => void
+  onchange?: () => void;
+  value?: string;
+  onBlur?: () => void;
 }
 interface Search {
   count: number;
@@ -41,13 +42,17 @@ interface GlobalStateType {
   setCart: React.Dispatch<React.SetStateAction<any>>;
   nav: string;
   countries: CountriesType[];
-  Users:any;
+  Users: any;
   setUsers: any;
   setNav: React.Dispatch<React.SetStateAction<string>>;
+  setIsLogedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  setLogedUser: React.Dispatch<React.SetStateAction<string | null | undefined>>;
+  isLogedIn:boolean;
+  logedUser:string;
 }
 interface user {
-  email:string;
-  password:string;
+  email: string;
+  password: string;
 }
 interface CountriesType {
   code2: string;

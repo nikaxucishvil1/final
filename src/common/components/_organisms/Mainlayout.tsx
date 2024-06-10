@@ -14,15 +14,30 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<DataType[]>([]);
   const [nav, setNav] = useState("Home");
   const [Users, setUsers] = useState([]);
-  useEffect(() => {
-    if (window.location.pathname !== "/") {
-      window.location.replace("/");
-    }
-  }, []);
+  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [logedUser, setLogedUser] = useState("");
+  // useEffect(() => {
+  //   if (window.location.pathname !== "/") {
+  //     window.location.replace("/");
+  //   }
+  // }, []);
 
   return (
     <GlobalState.Provider
-      value={{ data, countries, cart, setCart, nav, setNav, Users, setUsers }}
+      value={{
+        data,
+        countries,
+        cart,
+        setCart,
+        nav,
+        setNav,
+        Users,
+        setUsers,
+        setLogedUser,
+        logedUser,
+        setIsLogedIn,
+        isLogedIn,
+      }}
     >
       {children}
     </GlobalState.Provider>

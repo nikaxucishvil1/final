@@ -3,9 +3,14 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxSlash } from "react-icons/rx";
 import Button from "../../_atoms/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { GlobalState } from "../../_organisms/Mainlayout";
+import { useContext } from "react";
 
 const Header = () => {
-  const navigate = useNavigate()
+  const context = useContext(GlobalState);
+  if (!context) return null;
+  const { logedUser, isLogedIn } = context;
+  const navigate = useNavigate();
 
   return (
     <header className="text-customGrey bg-headerBg flex items-center justify-around p-4">
@@ -26,9 +31,21 @@ const Header = () => {
         </div>
         <div className="w-[1px] h-[15px] bg-customGrey"></div>
         <div className="flex items-center justify-center">
-          <Button onClick={() => {}}>Sign In</Button>
-          <RxSlash />
-          <Button onClick={() => {navigate('/Signup')}}>Sign Up</Button>
+          {isLogedIn ? (
+            <p>{logedUser}</p>
+          ) : (
+            <div className="flex items-center justify-center">
+              <Button onClick={() => {}}>Sign In</Button>
+              <RxSlash />
+              <Button
+                onClick={() => {
+                  navigate("/Signup");
+                }}
+              >
+                Sign Up
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </header>
