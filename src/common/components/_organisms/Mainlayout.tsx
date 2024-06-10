@@ -13,6 +13,7 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const [countries] = useState<any>(countryDataJson);
   const [cart, setCart] = useState<DataType[]>([]);
   const [nav, setNav] = useState("Home");
+  const [Users, setUsers] = useState([]);
   useEffect(() => {
     if (window.location.pathname !== "/") {
       window.location.replace("/");
@@ -21,7 +22,7 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <GlobalState.Provider
-      value={{ data, countries, cart, setCart, nav, setNav }}
+      value={{ data, countries, cart, setCart, nav, setNav, Users, setUsers }}
     >
       {children}
     </GlobalState.Provider>

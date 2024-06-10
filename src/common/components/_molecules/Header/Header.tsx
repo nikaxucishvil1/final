@@ -2,8 +2,10 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxSlash } from "react-icons/rx";
 import Button from "../../_atoms/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate()
 
   return (
     <header className="text-customGrey bg-headerBg flex items-center justify-around p-4">
@@ -24,9 +26,9 @@ const Header = () => {
         </div>
         <div className="w-[1px] h-[15px] bg-customGrey"></div>
         <div className="flex items-center justify-center">
-          <Button>Sign In</Button>
+          <Button onClick={() => {}}>Sign In</Button>
           <RxSlash />
-          <Button>Sign Up</Button>
+          <Button onClick={() => {navigate('/Signup')}}>Sign Up</Button>
         </div>
       </div>
     </header>

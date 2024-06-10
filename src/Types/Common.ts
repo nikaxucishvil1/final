@@ -5,8 +5,12 @@ interface button {
 }
 interface Input {
   type: string;
-  placeholder: string;
+  placeholder?: string;
   className: string;
+  name?: string;
+  onchange?:() => void;
+  value?:string;
+  onBlur?:() => void
 }
 interface Search {
   count: number;
@@ -36,22 +40,28 @@ interface GlobalStateType {
   cart: DataType[];
   setCart: React.Dispatch<React.SetStateAction<any>>;
   nav: string;
-  countries:CountriesType[];
+  countries: CountriesType[];
+  Users:any;
+  setUsers: any;
   setNav: React.Dispatch<React.SetStateAction<string>>;
 }
-interface CountriesType{
-  code2:string,
-  code3:string,
-  name:string,
-  capital:string,
-  region:string,
-  subregion:string,
-  states:states[]
+interface user {
+  email:string;
+  password:string;
+}
+interface CountriesType {
+  code2: string;
+  code3: string;
+  name: string;
+  capital: string;
+  region: string;
+  subregion: string;
+  states: states[];
 }
 interface states {
-  code:string,
-  name:string,
-  subdivision: string | null
+  code: string;
+  name: string;
+  subdivision: string | null;
 }
 interface List {
   children: string;
@@ -66,20 +76,20 @@ interface CardProducts {
 interface Total {
   calculateTotal: () => React.ReactNode;
   setNav: React.Dispatch<React.SetStateAction<string>>;
-  cart:DataType[]
+  cart: DataType[];
 }
 interface COInput {
-  label:string;
-  InputType:string;
-  Placeholder:string;
-  InputName?:string;
-  className?:string
+  label: string;
+  InputType: string;
+  Placeholder: string;
+  InputName?: string;
+  className?: string;
 }
 interface Billing {
-  formik:any;
-  setValue:React.Dispatch<React.SetStateAction<string>>;
-  countries:CountriesType[];
-  states:states[]
+  formik: any;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+  countries: CountriesType[];
+  states: states[];
 }
 
 interface FormValues {
@@ -94,9 +104,9 @@ interface FormValues {
 }
 
 interface CheckoutCard {
-  cart:DataType[];
+  cart: DataType[];
   calculateTotal: () => React.ReactNode;
   calculateSubtotal: (item: DataType) => React.ReactNode;
-  paymentMethod:string;
-  handlePaymentMethodChange: (e:React.ChangeEvent<HTMLInputElement>) => void
+  paymentMethod: string;
+  handlePaymentMethodChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

@@ -1,8 +1,8 @@
 
 const Input = (props:Input) => {
-    const {type,placeholder,className} = props
+    const {type,placeholder,className,name,onchange,value,onBlur} = props
   return (
-    <input className={className} placeholder={placeholder} type={type} />
+    <input required onBlur={onBlur} className={className} name={name} value={value} onChange={onchange} placeholder={placeholder} type={type} />
   )
 }
 

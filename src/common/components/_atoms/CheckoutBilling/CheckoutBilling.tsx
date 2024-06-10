@@ -1,3 +1,5 @@
+import Input from "../Input/Input";
+
 const CheckoutBilling = (props: Billing) => {
   const { formik, setValue, countries, states } = props;
   return (
@@ -7,13 +9,13 @@ const CheckoutBilling = (props: Billing) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
             <label className="block mb-2 font-medium">First name</label>
-            <input
+            <Input
               type="text"
               name="firstName"
               placeholder="Your first name"
               className="w-full p-2 border rounded-md"
               value={formik.values.firstName}
-              onChange={formik.handleChange}
+              onchange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.firstName && formik.touched.firstName && (
@@ -22,13 +24,13 @@ const CheckoutBilling = (props: Billing) => {
           </div>
           <div>
             <label className="block mb-2 font-medium">Last name</label>
-            <input
+            <Input
               type="text"
               name="lastName"
               placeholder="Your first name"
               className="w-full p-2 border rounded-md"
               value={formik.values.lastName}
-              onChange={formik.handleChange}
+              onchange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.lastName && formik.touched.lastName && (
@@ -39,7 +41,7 @@ const CheckoutBilling = (props: Billing) => {
             <label className="block mb-2 font-medium">
               Company name (optional)
             </label>
-            <input
+            <Input
               type="text"
               name="companyName"
               placeholder="Company name"
@@ -49,13 +51,13 @@ const CheckoutBilling = (props: Billing) => {
         </div>
         <div>
           <label className="block mb-2 font-medium">Street Address</label>
-          <input
+          <Input
             type="text"
             name="Adress"
             placeholder="Email"
             className="w-full p-2 border rounded-md"
             value={formik.values.Adress}
-            onChange={formik.handleChange}
+            onchange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
           {formik.errors.Adress && formik.touched.Adress && (
@@ -110,14 +112,13 @@ const CheckoutBilling = (props: Billing) => {
           </div>
           <div>
             <label className="block mb-2 font-medium">Zip Code</label>
-            <input
+            <Input
               type="text"
               name="zip"
               placeholder="Zip Code"
               className="w-full p-2 border rounded-md"
-              required
               value={formik.values.zip}
-              onChange={formik.handleChange}
+              onchange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.zip && formik.touched.zip && (
@@ -128,14 +129,13 @@ const CheckoutBilling = (props: Billing) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className="block mb-2 font-medium">Email</label>
-            <input
+            <Input
               type="email"
               name="email"
               placeholder="Email Address"
               className="w-full p-2 border rounded-md"
-              required
               value={formik.values.email}
-              onChange={formik.handleChange}
+              onchange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.email && formik.touched.email && (
@@ -144,14 +144,13 @@ const CheckoutBilling = (props: Billing) => {
           </div>
           <div>
             <label className="block mb-2 font-medium">Phone</label>
-            <input
+            <Input
               type="text"
               name="phoneNumber"
               placeholder="Phone number"
               className="w-full p-2 border rounded-md"
-              required
               value={formik.values.phoneNumber}
-              onChange={formik.handleChange}
+              onchange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.phoneNumber && formik.touched.phoneNumber && (
@@ -160,7 +159,7 @@ const CheckoutBilling = (props: Billing) => {
           </div>
         </div>
         <div className="flex items-center">
-          <input type="checkbox" className="mr-2" />
+          <Input type="checkbox" className="mr-2" />
           <label>Ship to a different address</label>
         </div>
       </div>
