@@ -4,6 +4,7 @@ import ShoppingCart from "../../pages/ShoppingCart/ShoppingCart";
 import Checkout from "../../pages/Checkout/Checkout";
 import Details from "../../pages/Details/Details";
 import SignUp from "../../pages/SignUp/SignUp";
+import Signin from "../../pages/SignIn/Signin";
 
 export const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -11,4 +12,5 @@ export const router = createBrowserRouter([
   { path: "/checkout", element: <Checkout /> },
   { path: "/Details", element: <Details /> },
   { path: "/Signup", element: <SignUp /> },
+  { path: "/Signin", element: <Signin /> },
 ]);

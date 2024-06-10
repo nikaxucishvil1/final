@@ -35,7 +35,9 @@ const Header = () => {
             <p>{logedUser}</p>
           ) : (
             <div className="flex items-center justify-center">
-              <Button onClick={() => {}}>Sign In</Button>
+              <Button onClick={() => {
+                navigate("/Signin")
+              }}>Sign In</Button>
               <RxSlash />
               <Button
                 onClick={() => {

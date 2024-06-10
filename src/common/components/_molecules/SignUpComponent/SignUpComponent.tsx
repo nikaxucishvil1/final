@@ -6,11 +6,13 @@ import * as Yup from "yup";
 import { GlobalState } from "../../_organisms/Mainlayout";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../../Firebase/Firebase-config";
+import { useNavigate } from "react-router-dom";
 
 const SignUpComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
   const { setIsLogedIn , setLogedUser } = context;
+  const navigate = useNavigate()
 
   const buildValidationSchema = Yup.object({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -40,6 +42,7 @@ const SignUpComponent = () => {
       register()
       setLogedUser(auth.currentUser?.email)
       setIsLogedIn(true)
+      navigate("/")
     },
   });
 
@@ -49,10 +52,8 @@ const SignUpComponent = () => {
       formik.values.email,
       formik.values.password
     );
-    console.log(user);
   };
-  const login = async () => {};
-  const logout = async () => {};
+
 
   return (
     <form

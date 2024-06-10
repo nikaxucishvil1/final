@@ -9,9 +9,9 @@ interface Input {
   placeholder?: string;
   className: string;
   name?: string;
-  onchange?: () => void;
+  onchange?: { (e: React.ChangeEvent<any>): void;}
   value?: string;
-  onBlur?: () => void;
+  onBlur?: { (e: React.FocusEvent<any, Element>): void};
 }
 interface Search {
   count: number;
@@ -46,9 +46,9 @@ interface GlobalStateType {
   setUsers: any;
   setNav: React.Dispatch<React.SetStateAction<string>>;
   setIsLogedIn: React.Dispatch<React.SetStateAction<boolean>>;
-  setLogedUser: React.Dispatch<React.SetStateAction<string | null | undefined>>;
-  isLogedIn:boolean;
-  logedUser:string;
+  setLogedUser: any;
+  isLogedIn: boolean;
+  logedUser: string;
 }
 interface user {
   email: string;
