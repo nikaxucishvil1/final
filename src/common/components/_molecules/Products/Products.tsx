@@ -5,6 +5,7 @@ import {  useNavigate } from "react-router-dom";
 import Button from "../../_atoms/Button/Button";
 import { capitalize } from "@mui/material";
 import { addToCart } from "../../_atoms/AddToCart/AddToCart";
+import Leaf from "../../../../../public/filter.png"
 
 const Products = () => {
   const context = useContext(GlobalState);
@@ -54,7 +55,7 @@ const Products = () => {
       <div className="flex items-center justify-between w-full pl-[10%] pr-[10%]">
         <div className="flex items-center justify-center gap-4 bg-customGreen text-white p-2 pl-4 pr-4 rounded-[10px]">
           <span>Filter</span>
-          <img src="../../../../../public/filter.png" alt="" />
+          <img src={Leaf} alt="" />
         </div>
         {shownData && <span>{shownData.length} Result Found</span>}
       </div>
