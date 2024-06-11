@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 const SignUpComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { setIsLogedIn , setLogedUser } = context;
-  const navigate = useNavigate()
+  const { setIsLogedIn, setLogedUser } = context;
+  const navigate = useNavigate();
 
   const buildValidationSchema = Yup.object({
     email: Yup.string().email("Invalid email address").required("Required"),
@@ -22,44 +22,31 @@ const SignUpComponent = () => {
       .required("Required"),
   });
 
-  const [validationSchema, setValidationSchema] = useState(
-    buildValidationSchema
-  );
+  const [validationSchema, setValidationSchema] = useState(buildValidationSchema);
 
   useEffect(() => {
     setValidationSchema(buildValidationSchema);
   }, []);
 
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-
   const formik = useFormik({
-    initialValues: initialValues,
+    initialValues: { email: "", password: "" },
     validationSchema: validationSchema,
-    onSubmit: () => {
-      register()
-      setLogedUser(auth.currentUser?.email)
-      setIsLogedIn(true)
-      navigate("/")
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        await createUserWithEmailAndPassword(auth, values.email, values.password);
+        setLogedUser(auth.currentUser?.email);
+        setIsLogedIn(true);
+        navigate("/");
+      } catch (error) {
+        console.error(error, "error");
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
-  const register = async () => {
-    const user = await createUserWithEmailAndPassword(
-      auth,
-      formik.values.email,
-      formik.values.password
-    );
-  };
-
-
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      className="flex flex-col items-center gap-10"
-    >
+    <form onSubmit={formik.handleSubmit} className="flex flex-col items-center gap-10">
       <Input
         type="text"
         name="email"

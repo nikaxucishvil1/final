@@ -13,23 +13,27 @@ const SigninComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const login = async () => {
+
+  const login = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
+      setLogedUser(auth.currentUser?.email);
+      setIsLogedIn(true);
+      navigate("/");
     } catch (error) {
-        console.error(error ,"error")
+      alert("invalid information");
     }
   };
+
   return (
-    <form className="flex flex-col items-center gap-10">
+    <form className="flex flex-col items-center gap-10" onSubmit={() => login}>
       <Input
         type="text"
         name="email"
         placeholder="Email"
         className="p-2 border rounded-md w-[400px]"
-        onchange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onchange={(e) => setEmail(e.target.value)}
       />
 
       <Input
@@ -37,18 +41,11 @@ const SigninComponent = () => {
         name="password"
         placeholder="Password"
         className="p-2 border rounded-md w-[400px]"
-        onchange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onchange={(e) => setPassword(e.target.value)}
       />
 
       <Button
         type="submit"
-        onClick={() => {
-          login(), navigate("/");
-          setLogedUser(auth.currentUser?.email);
-          setIsLogedIn(true);
-        }}
         className="flex w-full items-center justify-center gap-3 px-6 py-3 text-white bg-[#00B207] rounded-full"
       >
         Log in
