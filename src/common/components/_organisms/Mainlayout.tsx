@@ -1,4 +1,4 @@
-import React, { createContext, useEffect } from "react";
+import React, { createContext } from "react";
 
 import { useState } from "react";
 import datajson from "../../../data.json";
@@ -16,12 +16,7 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const [Users, setUsers] = useState([]);
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [logedUser, setLogedUser] = useState("");
-  // useEffect(() => {
-  //   if (window.location.pathname !== "/") {
-  //     window.location.replace("/");
-  //   }
-  // }, []);
-
+ 
   return (
     <GlobalState.Provider
       value={{

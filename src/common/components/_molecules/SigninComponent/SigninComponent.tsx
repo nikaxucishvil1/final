@@ -14,20 +14,20 @@ const SigninComponent = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const login = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const login = async (event:any) => {
+    event.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setLogedUser(auth.currentUser?.email);
       setIsLogedIn(true);
       navigate("/");
     } catch (error) {
-      alert("invalid information");
+      console.error(error, "error");
     }
   };
 
   return (
-    <form className="flex flex-col items-center gap-10" onSubmit={() => login}>
+    <form className="flex flex-col items-center gap-10" onSubmit={login}>
       <Input
         type="text"
         name="email"
