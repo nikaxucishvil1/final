@@ -53,8 +53,8 @@ const Products = () => {
     <div className="flex mt-10 flex-col gap-5">
       <div className="flex items-center justify-between w-full pl-[10%] pr-[10%]">
         <div className="flex items-center justify-center gap-4 bg-customGreen text-white p-2 pl-4 pr-4 rounded-[10px]">
-          <span>filter</span>
-          <img src="../../../../../public/filter.svg" alt="" />
+          <span>Filter</span>
+          <img src="../../../../../public/filter.png" alt="" />
         </div>
         {shownData && <span>{shownData.length} Result Found</span>}
       </div>
