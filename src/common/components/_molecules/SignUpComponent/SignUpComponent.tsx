@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const SignUpComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { setIsLogedIn, setLogedUser } = context;
+  const { setIsLogedIn, setLogedUser,setCategory,setNav } = context;
   const navigate = useNavigate();
 
   const buildValidationSchema = Yup.object({
@@ -37,6 +37,8 @@ const SignUpComponent = () => {
         setLogedUser(auth.currentUser?.email);
         setIsLogedIn(true);
         navigate("/");
+        setNav("Home");
+        setCategory("")
       } catch (error) {
         console.error(error, "error");
       } finally {

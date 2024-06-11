@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 const SigninComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { setIsLogedIn, setLogedUser } = context;
+  const { setIsLogedIn, setLogedUser, setNav,setCategory } = context;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -21,8 +21,10 @@ const SigninComponent = () => {
       setLogedUser(auth.currentUser?.email);
       setIsLogedIn(true);
       navigate("/");
+      setNav("home")
+      setCategory("")
     } catch (error) {
-      console.error(error, "error");
+      alert("something went wrong ty again")
     }
   };
 

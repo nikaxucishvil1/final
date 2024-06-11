@@ -1,16 +1,18 @@
 import { useState, useContext, useEffect } from "react";
 import { GlobalState } from "../../_organisms/Mainlayout";
 import Slider from "@mui/material/Slider";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../_atoms/Button/Button";
 import { capitalize } from "@mui/material";
 import { addToCart } from "../../_atoms/AddToCart/AddToCart";
-import Leaf from "../../../../../public/filter.png"
+import filter from "../../../../../public/filter.png";
+import bag from "../../../../../public/Bag.png";
+import rating from "../../../../../public/Rating.png";
 
 const Products = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { data, cart, setCart, setNav } = context;
+  const { data, cart, setCart, setNav, setCategory } = context;
 
   const [shownData, setShownData] = useState(data);
   const [filters] = useState<string[]>([]);
@@ -19,6 +21,11 @@ const Products = () => {
   const [checked, setChecked] = useState<number | null>(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCategory("")
+  }, [])
+  
 
   const transferData = (item: DataType) => {
     return navigate("/Details", {
@@ -38,24 +45,24 @@ const Products = () => {
       setChecked(null);
       setShownData(data);
       setNav("Home");
+      setCategory("");
     } else {
       setChecked(index);
       setShownData(data.filter((item) => item.category === filter));
-      setNav(capitalize(filter));
+      setCategory(capitalize(filter));
     }
   };
 
   const handleSliderChange = (__event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
-  
 
   return (
     <div className="flex mt-10 flex-col gap-5">
       <div className="flex items-center justify-between w-full pl-[10%] pr-[10%]">
         <div className="flex items-center justify-center gap-4 bg-customGreen text-white p-2 pl-4 pr-4 rounded-[10px]">
           <span>Filter</span>
-          <img src={Leaf} alt="" />
+          <img src={filter} alt="" />
         </div>
         {shownData && <span>{shownData.length} Result Found</span>}
       </div>
@@ -108,7 +115,13 @@ const Products = () => {
             .map((item, i) => (
               <div key={i}>
                 <div className="one-product relative min-h-[400px] w-[300px] rounded-[8px] overflow-hidden flex flex-col  bg-white border border-borderGrey shadow-md hover:border-GreenBorder hover:shadow-GreenBorder p-2">
-                  <div onClick={() => transferData(item)} className="flex items-center justify-center">
+                  <div
+                    onClick={() => {
+                      transferData(item);
+                      setCategory(item.title);
+                    }}
+                    className="flex items-center justify-center"
+                  >
                     <img
                       className="h-[230px] w-[198px]"
                       src={item.image}
@@ -121,17 +134,13 @@ const Products = () => {
                     <Button
                       className="absolute bottom-[25px] right-[16px] bg-returnBg w-[30px] h-[30px] rounded-full flex items-center justify-center  "
                       onClick={() => {
-                        addToCart(item,cart,setCart);
+                        addToCart(item, cart, setCart);
                       }}
                     >
-                      <img
-                        className="w-[15px] h-[15px]"
-                        src="/assets/cart.svg"
-                        alt=""
-                      />
+                      <img className="w-[15px] h-[15px]" src={bag} alt="" />
                     </Button>
                     <div className="stars ">
-                      <img className="" src="assets/star.svg" alt="" />
+                      <img className="" src={rating} alt="" />
                     </div>
                   </div>
                 </div>

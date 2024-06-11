@@ -6,13 +6,14 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../_organisms/Mainlayout";
 import { Link } from "react-router-dom";
+import plant from "../../../../../public/plant1.png"
 
 const Search = () => {
   const context = useContext(GlobalState);
   const [cost, setCost] = useState(0);
 
   if (!context) return null;
-  const { cart, setNav } = context;
+  const { cart, setNav, setCategory } = context;
 
   useEffect(() => {
     const totalCost = cart.reduce((currentValue, item) => {
@@ -25,13 +26,13 @@ const Search = () => {
     <>
       <div className="flex items-center justify-around mt-4">
         <div className="flex items-center justify-center gap-[10px]">
-          <img src="../../../../../public/plant1.png" alt="ad" />
+          <img src={plant} alt="ad" />
           <p className="text-3xl">Ecobazar</p>
         </div>
         <div className="flex items-center justify-center border border-borderCl rounded-[6px]">
           <div className="flex items-center justify-center gap-2 p-2">
             <CiSearch color="#1A1A1A" fontSize={20} />
-            <Input className="min-w-[300px]" placeholder="Search" type="text" />
+            <Input className="min-w-[300px] focus:outline-none" placeholder="Search" type="text" />
           </div>
           <Button className="bg-customGreen p-2 rounded-tr-[6px] rounded-br-[6px] border border-customGreen text-white">
             Search
@@ -43,7 +44,7 @@ const Search = () => {
           <Link
             to={"/shoppingCart"}
             className="relative"
-            onClick={() => setNav("Shopping Cart")}
+            onClick={() => {setNav("Shopping Cart"); setCategory("")}}
           >
             <LiaShoppingBagSolid fontSize={40} />
             <div className="bg-cartCl flex items-center justify-center rounded-[30px] text-white absolute right-[3px] top-[-3px] ">

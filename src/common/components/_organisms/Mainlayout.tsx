@@ -13,6 +13,7 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
   const [countries] = useState<any>(countryDataJson);
   const [cart, setCart] = useState<DataType[]>([]);
   const [nav, setNav] = useState("Home");
+  const [category, setCategory] = useState("");
   const [Users, setUsers] = useState([]);
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [logedUser, setLogedUser] = useState("");
@@ -32,6 +33,8 @@ const Mainlayout = ({ children }: { children: React.ReactNode }) => {
         logedUser,
         setIsLogedIn,
         isLogedIn,
+        category,
+        setCategory,
       }}
     >
       {children}

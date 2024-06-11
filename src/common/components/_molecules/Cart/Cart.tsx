@@ -10,7 +10,7 @@ import Coupon from "../../_atoms/CartCoupon/Coupon";
 const ShoppingCartComponent = () => {
   const context = useContext(GlobalState);
   if (!context) return null;
-  const { cart, setCart,setNav } = context;
+  const { cart, setCart, setNav, setCategory } = context;
 
   const updateItemCount = (id: number, newCount: number) => {
     setCart(
@@ -58,11 +58,17 @@ const ShoppingCartComponent = () => {
                 />
               ))}
           </div>
-            <Link to={"/"}>
-            <Button className="w-1/5 p-3 h-12 mt-3 rounded-3xl bg-returnBg">
+          <Link to={"/"}>
+            <Button
+              onClick={() => {
+                setNav("home");
+                setCategory("");
+              }}
+              className="w-1/5 p-3 h-12 mt-3 rounded-3xl bg-returnBg"
+            >
               Return to Shop
             </Button>
-            </Link>
+          </Link>
         </div>
         <Coupon />
       </div>

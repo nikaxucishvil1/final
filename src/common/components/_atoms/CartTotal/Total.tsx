@@ -24,7 +24,7 @@ const Total = (props: Total) => {
         <Button
           className="flex justify-center items-center w-full h-12 mt-2 bg-customGreen rounded-[30px] text-white cursor-pointer"
           onClick={() => {
-            setNav("Checkout");
+            cart.length > 0 ? setNav("Checkout") : setNav("Shopping Cart");
           }}
         >
           Proceed to Checkout
