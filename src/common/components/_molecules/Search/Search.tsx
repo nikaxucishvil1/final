@@ -25,7 +25,7 @@ const Search = () => {
     <>
       <div className="flex items-center justify-around mt-4">
         <div className="flex items-center justify-center gap-[10px]">
-          <img src="../../../../../public/assets/leaf.svg" alt="" />
+          <img src="../../../../../public/plant1.png" alt="" />
           <p className="text-3xl">Ecobazar</p>
         </div>
         <div className="flex items-center justify-center border border-borderCl rounded-[6px]">
